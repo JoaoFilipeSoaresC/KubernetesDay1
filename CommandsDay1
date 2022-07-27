@@ -1,0 +1,17 @@
+Primeira aula de Kubernetes:
+
+1. Criação do cluster com minikube:
+
+	minikube start -p pacman-cluster
+
+2. Criação do ficheiro yaml e seu deployment:
+
+	kubectl create deployment pacman --image=ghcr.io/joaofilipesoaresc/pacman:2.0 --replicas=3 --port=80 --dry-run=client -o=yaml
+
+3. Realizar o apply desse ficheiro (basta este ponto se tiver o ficheiro criado manualmente):
+
+	kubectl apply -f pacman-cluster.yaml
+
+4. Realizar o forward para porta pretendida:
+
+	kubectl port-forward deploy/pacman 8080:80
